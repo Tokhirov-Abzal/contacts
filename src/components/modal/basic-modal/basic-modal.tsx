@@ -3,6 +3,7 @@ import { ReactComponent as CancelIcon } from "src/assets/icons/cancel.svg";
 interface IBasicModalProps {
   children: React.ReactElement | React.ReactElement[];
   isOpen: boolean;
+  title: string;
   onClickOK: () => void;
   onCancel: () => void;
 }
@@ -12,6 +13,7 @@ export const BasicModal = ({
   isOpen,
   onClickOK,
   onCancel,
+  title,
 }: IBasicModalProps) => {
   if (!isOpen) {
     return null;
@@ -24,7 +26,8 @@ export const BasicModal = ({
           className="absolute top-4 right-4 cursor-pointer"
           onClick={onCancel}
         />
-        <div className="w-full mt-14 text-center">{children}</div>
+        <div className="absolute top-4 left-12 text-2xl font-bold">{title}</div>
+        <div className="w-full mt-14 text-start">{children}</div>
         <div
           className="mt-16 w-24 p-2 text-center self-end  bg-green-200 cursor-pointer"
           onClick={onClickOK}

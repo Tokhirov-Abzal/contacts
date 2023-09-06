@@ -19,7 +19,14 @@ export const AppRoutes = () => {
           </Protected>
         }
       />
-      <Route path="/contacts/:id" element={<ContactDetailPage />} />
+      <Route
+        path="/contacts/:id"
+        element={
+          <Protected>
+            <ContactDetailPage />
+          </Protected>
+        }
+      />
       <Route path="/login" element={<SignInPage />} />
       <Route path="/register" element={<RegisterPage />} />
     </Routes>

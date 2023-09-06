@@ -1,10 +1,11 @@
-import { useForm } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { InputField } from "src/components";
 
-interface IContactCreateFields {
+export interface IContactCreateFields {
   name: string;
   email: string;
   phone: number;
+  tags: string;
 }
 
 const formOptions = {
@@ -12,17 +13,21 @@ const formOptions = {
   phone: { required: true },
 };
 
-export const ContactCreateForm = () => {
-  const { register, handleSubmit } = useForm<IContactCreateFields>();
-
+export const ContactCreateForm = ({
+  register,
+}: {
+  register: UseFormRegister<IContactCreateFields>;
+}) => {
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
-      <InputField title="Name" register={register("name", formOptions.name)} />
+    <form>
+      <InputField title="ФИО" register={register("name", formOptions.name)} />
       <InputField title="Email" register={register("email")} />
       <InputField
-        title="Phone"
+        title="Моб. номер"
+        type="number"
         register={register("phone", formOptions.phone)}
       />
+      <InputField title="Теги" register={register("tags", formOptions.phone)} />
     </form>
   );
 };

@@ -5,15 +5,17 @@ interface ISelectFieldProps {
   options: string[];
   name: string;
   registerOptions?: RegisterOptions;
+  placeholder?: string;
+  className?: string;
 }
 
-export function SelectField({
+export const SelectField = ({
   register,
   options,
   name,
   registerOptions,
   ...rest
-}: ISelectFieldProps) {
+}: ISelectFieldProps) => {
   return (
     <select {...register(name, registerOptions)} {...rest}>
       {options.map((value) => (
@@ -23,4 +25,4 @@ export function SelectField({
       ))}
     </select>
   );
-}
+};
